@@ -2,8 +2,9 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import TodoListItem from './TodoListItem'
 
-var todoList = [
+const todoList = [
     {
       id: 1,
       title: "Kilter Board"
@@ -18,13 +19,13 @@ var todoList = [
     }
 ]
 
-function TodoList () {
+const TodoList = () => {
     return (
       <ul>
         {
-          todoList.map(function(item) {
-            return <li key={item.id}>{item.title}</li>
-          })
+          todoList.map(todo => (
+            <TodoListItem key={todo.id} todo={todo} />
+          ))
         }
       </ul>
     )
