@@ -13,7 +13,12 @@ function AddTodoForm (props) {
 
     const handleAddTodo = (event) => {
         event.preventDefault();
-        props.onAddTodo(todoTitle);
+        const newTodo = {
+            title: todoTitle,
+            id: Date.now()
+        };
+
+        props.onAddTodo(newTodo);
         setTodoTitle('');
     };
 
