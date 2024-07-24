@@ -6,7 +6,8 @@ import TodoList from './TodoList'
 import AddTodoForm from './AddTodoForm'
 import TodoListItem from './TodoListItem'
 
-function App() {
+const useSemiPersistentstate = () => {
+
   const [todoList, setTodoList] = useState(() => {
     const savedTodoList = localStorage.getItem('savedTodoList');
     return savedTodoList ? JSON.parse(savedTodoList) : [];
@@ -16,6 +17,12 @@ function App() {
     localStorage.setItem('savedTodoList', JSON.stringify(todoList));
   }, [todoList]);
 
+  return [todoList, setTodoList];
+};
+
+function App() {
+  const [todoList, setTodoList] = useSemiPersistentstate();
+  
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
   }
