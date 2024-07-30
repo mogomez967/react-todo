@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import InputWithLabel from './InputWithLabel';
 
 function AddTodoForm (props) {
     const [todoTitle, setTodoTitle] = useState('');
@@ -24,13 +25,10 @@ function AddTodoForm (props) {
 
     return (
         <form onSubmit={handleAddTodo}>
-            <label htmlFor="todoTitle">Title </label>            
-            <input 
-                name="title" 
-                type="text" 
-                id="todoTitle" 
-                value={todoTitle} 
-                onChange={handleTitleChange}
+            <InputWithLabel
+                label="Title"
+                todoTitle={props.todoTitle}
+                handleTitleChange={props.handleTitleChange}
             />
             <button type="submit">Add</button>
         </form>
